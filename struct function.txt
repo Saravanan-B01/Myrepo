@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Rectangle {
+    int a;
+    int b;
+};
+
+struct Rectangle *fun()
+{
+    struct Rectangle *p;
+    p= (struct Rectangle*)malloc(sizeof(struct Rectangle));
+    p->a= 10;
+    p->b= 20;
+    return p;
+}
+
+int main()
+{
+    struct Rectangle *r= fun();
+    printf("Passing struct as argument %d\n", r->a);
+}

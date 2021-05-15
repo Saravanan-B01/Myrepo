@@ -1,0 +1,16 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct Rectangle {
+    int a;
+    int b;
+};
+int fun(struct Rectangle &r2)
+{
+    return r2.a*r2.b;
+
+}
+int main()
+{
+    struct Rectangle r= {10,20};;
+    printf("Passing struct as argument %d\n", fun(r));
+}
