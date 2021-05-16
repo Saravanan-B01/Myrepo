@@ -4,7 +4,7 @@ int *fun(int a[], int n)
 {
     for(int i=0; i<n; i++)
     {
-        printf("Value of a[%d] %d\n", i, a[i]);
+        printf("Output Value of a[%d] %d\n", i, a[i]);
     }
     for(int i=1; i<=n; i++)
     {
@@ -20,7 +20,7 @@ int main()
     c = fun(b,n);
     for(int i=0; i<n; i++)
     {
-        printf("Value of c[%d] %d\n", i, c[i]);
+        printf("Output Value of c[%d] %d\n", i, c[i]);
     }
     return 0;
 }
