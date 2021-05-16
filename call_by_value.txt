@@ -12,5 +12,5 @@ int fun(struct Rectangle r2)
 int main()
 {
     struct Rectangle r= {10,20};;
-    printf("Passing struct as argument %d\n", fun(r));
+    printf("Passing structure as argument %d\n", fun(r));
 }
