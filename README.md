@@ -1,2 +1,2 @@
 # Myrepo
-Creating for understanding how github is work.
+Creating this repo for understanding how github is works.
