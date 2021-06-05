@@ -81,21 +81,19 @@ struct Node *searching(struct Node *p,  int key)
 void inserting(struct Node *p, int value, int pos)
 {
     int i=1;
-    struct Node *tmp, *q;
+    struct Node *tmp;
     tmp=(struct Node*)malloc(sizeof(struct Node));
     tmp->data=value;
     tmp->next=NULL;
 
-    while(pos==i)
+    for(i=1,i<=pos-1;i++)
     {
         p=p->next;
-        i++;
     }
     if(p!=NULL)
     {
-        q->next=p->next;
+        tmp->next=p->next;
         p->next=tmp;
-        tmp->next=q->next;
 
     }
 }
