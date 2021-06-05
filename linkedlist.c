@@ -46,7 +46,7 @@ int linkedlistcount(struct Node *K)
 
 }
 
-/**Finding the MAX value in linkedlist**/
+/**Finding the MAX value in linked list**/
 int findMAX(struct Node *M)
 {
     int ismax = -1;
@@ -60,6 +60,7 @@ int findMAX(struct Node *M)
     }
     return ismax;
 }
+/**Searching using the move to head method**/
 struct Node *searching(struct Node *p,  int key)
 {
     struct Node *q=NULL;
@@ -77,37 +78,121 @@ struct Node *searching(struct Node *p,  int key)
     }
     return NULL;
 };
-
+/**Inserting the node**/
 void inserting(struct Node *p, int value, int pos)
 {
-    int i=1;
+    int i;
     struct Node *tmp;
     tmp=(struct Node*)malloc(sizeof(struct Node));
     tmp->data=value;
     tmp->next=NULL;
 
-    for(i=1,i<=pos-1;i++)
+    if(pos==0)
     {
-        p=p->next;
+        tmp->next=first;
+        first=tmp;
     }
-    if(p!=NULL)
+    else
     {
+        for(i=1;i<=pos-1 && p;i++)
+        {
+            p=p->next;
+        }
         tmp->next=p->next;
         p->next=tmp;
+        p=tmp;
+    }
 
+}
+/**Inserting value to last node**/
+void insertinglast(struct Node *p, int value)
+{
+    struct Node *tmp,*q;
+    tmp=(struct Node*)malloc(sizeof(struct Node));
+    tmp->data=value;
+    tmp->next=NULL;
+
+    while(p!=NULL)
+    {
+            q=p;
+            p=p->next;
+    }
+    q->next=tmp;
+    p=q=tmp;
+
+}
+
+/**Inserting element in sorted linked**/
+void stortedlinkedlist(struct Node *p, int value)
+{
+    struct Node *tmp,*q;
+    tmp=(struct Node*)malloc(sizeof(struct Node));
+    tmp->data=value;
+    while(p!=NULL)
+    {
+        if(value < p->data)
+           {
+               tmp->next= q->next;
+               q->next = tmp;
+               q=tmp;
+               break;
+           }
+           q=p;
+           p=p->next;
+    }
+}
+/**Deleting the Node **/
+void deleteNode(struct Node *p, int data)
+{
+    struct Node *q;
+    while (p!=NULL)
+    {
+        if(p->data == data)
+        {
+            q->next=p->next;
+            break;
+        }
+        q=p;
+        p=p->next;
     }
 }
 
+void delete1(struct Node *p, int pos)
+{
+    int i;
+    struct Node *q;
+    if(pos == 0)
+    {
+        p=p->next;
+        first=p;
+
+    }
+    else {
+        for(int i=1;i<=pos-1;i++)
+        {
+            q=p;
+            p=p->next;
+        }
+        q->next=p->next;
+    }
+
+}
 int main()
 {
-    int a[]= {1,2,3,18,5,6};
-    createlinkedlist(a, 6);
+    inserting(first, 10, 0);
+    inserting(first, 20, 1);
+    inserting(first, 30, 2);
+    inserting(first, 40, 3);
+    inserting(first, 50, 4);
+    inserting(first, 60, 5);
+    inserting(first, 70, 6);
 
-    printf("Linked list count value %d\n",linkedlistcount(first));
-
-    printf("Maximum Value in linked list is %d\n", findMAX(first));
-    searching(first, 5);
-    inserting(first, 3, 25 );
+    Displaylinkedlist(first);
+    printf("\n\n");
+    delete1(first, 0);
+    Displaylinkedlist(first);
+    printf("\n\n");
+    delete1(first, 2);
     Displaylinkedlist(first);
 
     return 0;
