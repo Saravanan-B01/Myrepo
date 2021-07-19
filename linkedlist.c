@@ -197,6 +197,23 @@ void deleteting_dupicate(struct Node *p)
         }
     }
 }
+/**Reversing the linked list*/
+void reversing_linked_list(struct Node *N)
+{
+    int a[13], i=0;
+    while(N!=NULL)
+    {
+        a[i]=N->data;
+        N=N->next;
+        i++;
+    }
+    N=first; i--;
+    while(i>=0)
+    {
+        N->data=a[i--];
+        N=N->next;
+    }
+}
 int main()
 {
     inserting(first, 10, 0);
