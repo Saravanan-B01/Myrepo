@@ -228,6 +228,19 @@ void reversing_linked_list_using_slide(struct Node *N)
     }
     first=q;
 }
+/*Revering using recursive method */
+void reversing_recursive(struct Node *q, struct Node *p)
+{
+    if(p!=NULL)
+    {
+        reversing_recursive(p, p->next);
+        p->next=q;
+    }
+    else
+    {
+        first=q;
+    }
+}
 int main()
 {
     inserting(first, 10, 0);
