@@ -214,6 +214,20 @@ void reversing_linked_list(struct Node *N)
         N=N->next;
     }
 }
+/*Revesing linked list using sliding method*/
+void reversing_linked_list_using_slide(struct Node *N)
+{
+    struct Node *q = NULL;
+    struct Node *r = NULL;
+    while(N!=NULL)
+    {
+        r=q;
+        q=N;
+        N= N->next;
+        q->next=r;
+    }
+    first=q;
+}
 int main()
 {
     inserting(first, 10, 0);
