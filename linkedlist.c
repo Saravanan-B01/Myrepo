@@ -177,6 +177,26 @@ void delete1(struct Node *p, int pos)
     }
 
 }
+
+/*Deleting duplicate date in list */
+void deleteting_dupicate(struct Node *p)
+{
+    struct Node *q = p->next;
+    while(p!=NULL)
+    {
+        if(q->data!=p->data)
+        {
+            q=p;
+            p=p->next;
+        }
+        else
+        {
+            q->next = p->next;
+            p=q->next;
+
+        }
+    }
+}
 int main()
 {
     inserting(first, 10, 0);
