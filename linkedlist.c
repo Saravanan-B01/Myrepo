@@ -241,6 +241,17 @@ void reversing_recursive(struct Node *q, struct Node *p)
         first=q;
     }
 }
+/*** Concatenation ***/
+void concatenation(struct Node *N)
+{
+    while(N->next!=NULL)
+    {
+        N = N->next;
+    }
+    N->next= second;
+    N=second;
+}
+
 int main()
 {
     inserting(first, 10, 0);
