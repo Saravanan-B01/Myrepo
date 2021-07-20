@@ -251,7 +251,47 @@ void concatenation(struct Node *N)
     N->next= second;
     N=second;
 }
+/** Merging Linked list **/ 
+void merging_linked(struct Node *N, struct Node *P)
+{
+    struct Node *T;
+    struct Node *L;
+    if(N->data < P->data)
+    {
+        T=L=N;
+        N=N->next;
+        L->next=NULL;
+    }
+    else{
+        T=L=P;
+        P=P->next;
+        L->next=NULL;
+    }
+    while(N!=NULL && P!=NULL)
+    {
+        if(N->data < P->data)
+        {
+            L->next=N;
+            L=N;
+            N=N->next;
+            L->next=NULL;
+        }
+        else
+        {
+            L->next=P;
+            L=P;
+            P=P->next;
+            L->next=NULL;
+        }
+    }
+    if(N)
+        L->next=N;
+    else
+        L->next=P;
 
+
+    Displaylinkedlist(T);
+}
 int main()
 {
     inserting(first, 10, 0);
