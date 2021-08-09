@@ -312,6 +312,37 @@ void isloop(struct Node *f)
     }
 }
 
+/**Displaying circular linked list**/
+int DisplayCircularlinked(struct Node *D)
+{
+    static int i=0;
+    if(D!=first || i==0) {
+        i=1;
+        printf("Circular linked list value is %d\n", D->data);
+        return DisplayCircularlinked(D->next);
+    }
+    i=0;
+    return 0;
+}
+/**Circular linked list creation **/
+void circular_linked(struct Node *p, int value[], int array_len)
+{
+    int i;
+    struct Node *tmp, *last;
+    first=(struct Node*)malloc(sizeof(struct Node));
+    first->data=value[0];
+    first->next=first;
+    last=first;
+
+    for(i=1;i<=array_len;i++)
+    {
+        tmp=(struct Node*)malloc(sizeof(struct Node));
+        tmp->data=value[i];
+        tmp->next=last->next;
+        last->next=tmp;
+        last=tmp;
+    }
+}
 int main()
 {
     inserting(first, 10, 0);
