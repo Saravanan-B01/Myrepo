@@ -292,6 +292,26 @@ void merging_linked(struct Node *N, struct Node *P)
 
     Displaylinkedlist(T);
 }
+/**API for loop detecting**/
+void isloop(struct Node *f)
+{
+    struct Node *p, *q;
+    p=q=f;
+    do{
+        p=p->next;
+        q=q->next;
+        q=q ? q->next :q;
+    }while(q && p && p!=q);
+    if (p==q)
+    {
+        printf("LOOP in linked list\n");
+    }
+    else
+    {
+        printf("NO LOOP is detected\n");
+    }
+}
+
 int main()
 {
     inserting(first, 10, 0);
@@ -310,5 +330,10 @@ int main()
     delete1(first, 2);
     Displaylinkedlist(first);
 
+    /**Making an linkedlist as loop**/
+    struct Node *t1, *t2;
+    t1=first->next->next;
+    t2=first->next->next->next->next->next->next;
+    t2->next=t1;
     return 0;
 }
