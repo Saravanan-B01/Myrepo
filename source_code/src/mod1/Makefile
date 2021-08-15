@@ -1,50 +1,52 @@
-#Simple makefile-1
-#default:
-#	gcc module.c -o ../../bins/mod1
+#1 Simple Makefile  concept.
+default:
+	gcc module.c -o ../../bins/mod1
 
-#how to make incremental makefile-2
-#../../bins/mod1:module.c
-#	gcc module.c -o ../../bins/mod1
+#2 How to make incremental builds concept
+# Its works based on timestamp of source and target filed.
+../../bins/mod1:module.c
+	gcc module.c -o ../../bins/mod1
 
-#Further improving the makefile-3
-#OUTPUT = ../../bins/mod1
-#OBJS = ../../objs/mod1.o
-#INPUT = module.c
+#3 Further Improving the makefile by using variables.
+OUTPUT = ../../bins/mod1
+OBJS = ../../objs/mod1.o
+INPUT = module.c
 
-#$(OUTPUT):$(OBJS)
-#	gcc $(INPUT) -o $(OUTPUT)
+$(OUTPUT):$(OBJS)
+	gcc $(INPUT) -o $(OUTPUT)
 
-#$(OBJS):$(INPUT)
-#	gcc -c $(INPUT) -o $(OBJS)
+$(OBJS):$(INPUT)
+	gcc -c $(INPUT) -o $(OBJS)
 
-#Further improving the makefile-4
-#OUTPUT = ../../bins/mod1
-#OBJS = ../../objs/mod1.o
-#INPUT = module.c
+#4 Further improving the makefile by using symbols for dependency-$(^)/$(<) and target-$(@)
+OUTPUT = ../../bins/mod1
+OBJS = ../../objs/mod1.o
+INPUT = module.c
 
-#$(OUTPUT):$(OBJS)
-#	gcc $(<) -o $(@)
-#$(OBJS):$(INPUT)
-#	gcc -c $(<) -o $(@)
-
-#Further improving the makefile-5 by using LDFLAGS and CFLAGS
-#OUTPUT = ../../bins/mod1
-#OBJS = ../../objs/mod1.o
-#INPUT = module.c
-#CFLAGS = -Wall -Werror
-#LDFLAGS = -lm
-
-#$(OUTPUT):$(OBJS)
-#	gcc $(<) -o $(@) $(LDFLAGS)
-
-#$(OBJS):$(INPUT)
-#	gcc $(CFLAGS) -c $(<) -o $(@)
-
-#clean:
-#	rm $(OUTPUT) $(OBJS)
+$(OUTPUT):$(OBJS)
+	gcc $(<) -o $(@)
+$(OBJS):$(INPUT)
+	gcc -c $(<) -o $(@)
 
 
-#Further improving the makefile-6 by extending the definition.
+#5 Further improving the makefile by using LDFLAGS and CFLAGS
+OUTPUT = ../../bins/mod1
+OBJS = ../../objs/mod1.o
+INPUT = module.c
+CFLAGS = -Wall -Werror
+LDFLAGS = -lm
+
+$(OUTPUT):$(OBJS)
+	gcc $(<) -o $(@) $(LDFLAGS)
+
+$(OBJS):$(INPUT)
+	gcc $(CFLAGS) -c $(<) -o $(@)
+
+clean:
+	rm $(OUTPUT) $(OBJS)
+
+
+#6 Further improving the makefile-6 by extending the definitions.
 MODULE_NAME = module
 
 TARGET_DIR = ../../bins

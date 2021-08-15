@@ -1,74 +1,28 @@
-#Simple makefile-1
-#default:
-#	gcc module.c -o ../../bins/mod1
+#7 Creating the makefile for storing libs(.so) and objs(.o)
+MODULE_NAME = main_file
 
-#how to make incremental makefile-2
-#../../bins/mod1:module.c
-#	gcc module.c -o ../../bins/mod1
+TARGET_DIR = ../../libs
+TARGET = $(TARGET_DIR)/lib$(MODULE_NAME).so
 
-#Further improving the makefile-3
-#OUTPUT = ../../bins/mod1
-#OBJS = ../../objs/mod1.o
-#INPUT = module.c
+OBJS_DIR = ../../objs
+OBJS = $(OBJS_DIR)/$(MODULE_NAME).o
 
-#$(OUTPUT):$(OBJS)
-#	gcc $(INPUT) -o $(OUTPUT)
+CFLAGS = -Wall -Werror
+LDFLAGS = -lm
 
-#$(OBJS):$(INPUT)
-#	gcc -c $(INPUT) -o $(OBJS)
+$(TARGET):$(OBJS)
+	gcc -shared $(<) -o $(@) $(LDFLAGS)
 
-#Further improving the makefile-4
-#OUTPUT = ../../bins/mod1
-#OBJS = ../../objs/mod1.o
-#INPUT = module.c
+$(OBJS):$(MODULE_NAME).c
+	gcc $(CFLAGS) -c $(<) -o $(@)
 
-#$(OUTPUT):$(OBJS)
-#	gcc $(<) -o $(@)
-#$(OBJS):$(INPUT)
-#	gcc -c $(<) -o $(@)
-
-#Further improving the makefile-5 by using LDFLAGS and CFLAGS
-#OUTPUT = ../../bins/mod1
-#OBJS = ../../objs/mod1.o
-#INPUT = module.c
-#CFLAGS = -Wall -Werror
-#LDFLAGS = -lm
-
-#$(OUTPUT):$(OBJS)
-#	gcc $(<) -o $(@) $(LDFLAGS)
-
-#$(OBJS):$(INPUT)
-#	gcc $(CFLAGS) -c $(<) -o $(@)
-
-#clean:
-#	rm $(OUTPUT) $(OBJS)
-
-
-#Further improving the makefile-7 creating shared object
-#MODULE_NAME = main_file
-
-#TARGET_DIR = ../../libs
-#TARGET = $(TARGET_DIR)/lib$(MODULE_NAME).so
-
-#OBJS_DIR = ../../objs
-#OBJS = $(OBJS_DIR)/$(MODULE_NAME).o
-
-#CFLAGS = -Wall -Werror
-#LDFLAGS = -lm
-
-#$(TARGET):$(OBJS)
-#	gcc -shared $(<) -o $(@) $(LDFLAGS)
-
-#$(OBJS):$(MODULE_NAME).c
-#	gcc $(CFLAGS) -c $(<) -o $(@)
-
-#clean:
-#	rm $(TARGET) $(OBJS)
+clean:
+	rm $(TARGET) $(OBJS)
 
 
 
 
-#Further improving the makefile-8 creating shared object
+#8 Creating the makefile for creating output binary and libs(.so)
 MODULE_NAME = main_file
 
 TARGET_DIR = ../../bins
