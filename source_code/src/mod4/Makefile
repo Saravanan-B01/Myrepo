@@ -17,3 +17,6 @@ $(OBJS):$(MODULE).c
 
 test:$(TEST_MODULE).c
 	gcc $(<) -L../../libs -l$(MODULE) -o ../../test_bin/module4
+
+install:
+	cp *h ../../share_header
