@@ -45,7 +45,7 @@ int pop()
 
 }
 
-void Displayqueue(struct node *B)
+void Displaystack(struct node *B)
 {
 	if(B!=NULL)
 	{
@@ -83,7 +83,7 @@ int main()
         push(70);
         push(80);
 	printf("\n\n");
-	Displayqueue(Top);
+	Displaystack(Top);
 	printf("\n\n");
 	reversing_linked_list_using_slide(Top);
 	printf("\n\n");
