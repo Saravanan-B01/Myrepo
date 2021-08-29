@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "tree.h"
-
+#include "queue_func.h"
+static int ISPRESENT;
 
 void Treecreation()
 {
@@ -38,14 +38,27 @@ void Treecreation()
 	}
 }
 
-void Postorder(struct tree *p)
+void Postorder(struct tree *p, int X)
 {
-	if(p)
-	{
- 		Postorder(p->lchild);
- 		Postorder(p->rchild);
- 		printf("%d ",p->D);
- 	}
+        if(p && p->D == X)
+        {
+		ISPRESENT = 1;
+		return ;
+        }
+
+        if(p)
+        {
+                Postorder(p->rchild, X);
+                Postorder(p->lchild, X);
+        }
+}
+
+void searching(struct tree *p)
+{
+	int X;
+	printf("Enter the value to search in node\n");
+	scanf("%d", &X);
+	Postorder(p, X);
 }
 
 void Pretorder(struct tree *p)
@@ -69,16 +82,17 @@ void inorder(struct tree *p)
 }
 
 
-void main()
+int main()
 {
+
 	Treecreation();
 	printf("Print Postorder\n");
-	Postorder(root);
-	printf("\n\n");
-	printf("Print Preorder\n");
-	Pretorder(root);
-	printf("\n\n");
-	printf("Print Inorder\n");
-	inorder(root);
-	printf("\n\n");
+	searching(root);
+#ifdef TREES
+	if(ISPRESENT)
+	       printf("Value is present in node");
+	else
+		printf("Value is not present in node");
+#endif
+	return 0;
 }

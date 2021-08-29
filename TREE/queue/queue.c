@@ -1,22 +1,6 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-
-struct tree{
-	struct tree *lchild;
-	int D;
-	struct tree *rchild;
-};
-
-struct tree *root= NULL;
-
-struct node{
-	struct tree *Data;
-	struct node *Next;
-};
-
-struct node *Front = NULL;
-struct node *Rear = NULL;
-
+#include "queue_func.h"
 
 void enqueue(struct tree *p)
 {
@@ -48,13 +32,11 @@ struct tree *dequeue(struct node *Dequeue)
 	}
 	return X;
 }
-
-
 int isEmpty(struct node *queue)
 {
         if(queue == NULL) {
-		printf("Queue is empty\n");
- 		return 1;
+                printf("Queue is empty\n");
+                return 1;
         }else
-		return 0;
+                return 0;
 }
